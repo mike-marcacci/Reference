@@ -1,0 +1,102 @@
+@import "compass";
+@import "variables";
+
+@mixin arrow_style($side, $color) {
+  @if $side == 'top' or $side == 'bottom' {
+    border-left: $arrow-width solid transparent;
+  	border-right: $arrow-width solid transparent;
+  	left: 50%;
+  	margin-left: -1 * $arrow-width;
+  } @else {
+    border-top: $arrow-width solid transparent;
+  	border-bottom: $arrow-width solid transparent;
+  	top: 50%;
+  	margin-top: -1 * $arrow-width;
+  }
+  border-#{opposite-position($side)} : $arrow-height solid $color;
+  #{opposite-position($side)} : 100%;
+  margin-#{opposite-position($side)} : 0; //-1*$border-width;
+  position: absolute;
+  height: 0;
+  width: 0;
+}
+
+@mixin arrow($side) {
+  @include arrow_style($side, $border-color);
+  
+  
+  &::after {
+    @include arrow_style($side, $background-color);
+    content: ' ';
+    #{opposite-position($side)} : auto;
+    #{$side}: $border-width + 2px;
+    @if ($side == 'top') { -webkit-filter: drop-shadow(0 -2px 0 $inset-color) }
+    @if ($side == 'right') { -webkit-filter: drop-shadow(2px 0 0 $inset-color) }
+    @if ($side == 'bottom') { -webkit-filter: drop-shadow(0 2px 0 $inset-color) }
+    @if ($side == 'left') { -webkit-filter: drop-shadow(-2px 0 0 $inset-color) }
+  }
+}
+
+
+.reference-link-active.apple {
+  background-color: rgb(255,243,86); // Old browsers
+  @include filter-gradient(#fff356, #e5c510, vertical); // IE6-9
+  @include background-image(linear-gradient(top, rgba(255,243,86,1) 0%,rgba(229,197,16,1) 100%));
+  @include box-shadow(0 .1em .2em rgba(0,0,0,.5));
+  padding: .1em .2em;
+  margin: -.1em -.2em;
+  border: .08em solid #FFEE00;
+  border-radius: .4em;
+  color: black;
+}
+
+.reference-bubble.apple {
+  @include box-shadow(0 5px 20px rgba(0,0,0,.35), 0 0 1px $inset-color inset, 0 0 1px $inset-color inset, 0 0 1px $inset-color inset);
+  font-family: Baskerville, Times New Roman, Times, serif;
+  background: $background-color;
+  border-color: $border-color;
+  border-radius: 5px;
+  border-style: $border-style;
+  border-width: $border-width;
+  color: $color;
+  margin-bottom: 10px;
+  opacity: .97;
+  padding: 7px $padding-x;
+  position: absolute;
+  width: $width;
+  z-index: 1;
+  font-size: $font-size;
+  
+  
+  top: 100%;
+  left: 50%;
+  margin-left: -1*($width/2 + $padding-x);
+  margin-top: $arrow-height - 4px;
+
+  
+  .reference-bubble-arrow-up {
+  	@include arrow('top');
+  }
+
+  .reference-bubble-arrow-right {
+  	@include arrow('right');
+  }
+
+  .reference-bubble-arrow-down {
+  	@include arrow('bottom');
+  }
+
+  .reference-bubble-arrow-left {
+  	@include arrow('left');
+  }
+  
+  .reference-collection-name {
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba($header-color,.3);
+    @include box-shadow(0 1px 0 rgba($inset-color,.5));
+    font-size: 1.2em;
+    text-shadow: 1px 1px 0 white;
+    color: $header-color;
+    display: block;
+  }
+}

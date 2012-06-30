@@ -1,0 +1,18 @@
+$background-color: rgb(241, 241, 241);
+$border-color: rgb(176, 176, 176);
+$inset-color: lighten($background-color, 60%);
+
+$border-width: 1px;
+$border-style: solid;
+
+$color: black;
+$header-color: lighten($color, 45%);
+$header-shadow-color: lighten($header-color, 60%);
+
+$arrow-width: 12px;
+$arrow-height: 12px;
+
+$font-size: 14px;
+
+$padding-x: 20px;
+$width: 280px;

@@ -1,0 +1,14 @@
+@import "compass";
+
+.reference-link {
+  position: relative;
+}
+
+.reference-link:not(.reference-link-active){
+  text-shadow: 0 0 3px yellow, 0 0 3px yellow,0 0 5px #FF3C00;
+}
+
+.reference-bubble {
+  position: absolute;
+}
+

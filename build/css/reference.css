@@ -1,0 +1,14 @@
+/* line 3, ../../src/scss/reference.scss */
+.reference-link {
+  position: relative;
+}
+
+/* line 7, ../../src/scss/reference.scss */
+.reference-link:not(.reference-link-active) {
+  text-shadow: 0 0 3px yellow, 0 0 3px yellow,0 0 5px #FF3C00;
+}
+
+/* line 11, ../../src/scss/reference.scss */
+.reference-bubble {
+  position: absolute;
+}

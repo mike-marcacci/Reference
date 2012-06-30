@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Reference</title>
+    <link rel="stylesheet" type="text/css" href="../build/css/reference.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/apple/css/apple.css" />
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="../src/js/collection.js"></script>
+    <script type="text/javascript" src="../src/js/parser.js"></script>
+    <script type="text/javascript" src="../src/js/viewer.js"></script>
+  </head>
+  <body
+    <h1>Reference</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl augue, cursus id aliquam vel, dictum sed purus. Integer vel urna sed nisi lacinia venenatis. Nam vitae cursus metus. Suspendisse potenti. Fusce pulvinar ipsum id est vulputate molestie. Aliquam ut odio purus. Fusce adipiscing nibh et dui egestas tincidunt. Duis vehicula fermentum ante, nec rutrum ligula tincidunt eget. Etiam rhoncus, elit at ornare suscipit, nibh sem fermentum augue, sed malesuada ante nisl quis arcu. Ut ultricies, augue eget <span class="reference-link reference-link-active apple" data-referenceTerm="word" data-referenceTheme="apple" data-referenceCollections="0,1">word</span> feugiat faucibus, enim est suscipit nisl, non adipiscing est dolor at risus. Praesent id enim a nulla varius tristique. Phasellus hendrerit libero vitae turpis porttitor non laoreet sapien tincidunt.</p>
+    
+    
+    <div id="bubble" class="reference-bubble apple">
+      <div class="reference-bubble-arrow reference-bubble-arrow-up"></div>
+      <div class="reference-collection-name">Dictionary</div>
+      <div class="reference-collection-result">
+        <p>Here's the result!</p>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+      $('#bubble').hide();
+      $(function(){
+		    
+        var collection1 = {
+            title: 'Dictionary',      
+            data: {
+              'ipsum' : "This is the second word in the popular thingy."
+            }
+          }
+          
+        var collection2 = {
+            title: 'Links',      
+            data: {
+              'eget' : "Try out <a href=\"http://google.com\">Google!</a>",
+              'ipsum' : "Oooh"
+            }
+          }
+          
+        
+    		$('body').addReferences({
+			    collections: [collection1, collection2],
+          trigger: 'click'
+    		});
+		
+      })
+    </script>
+    
+  </body>
+</html>
