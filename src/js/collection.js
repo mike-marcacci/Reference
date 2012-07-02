@@ -3,7 +3,7 @@
   $.extend({referenceCollections: []});
   
   $.extend({addReferenceCollection: function(collection){
-	  var collection = $.extend({
+    var collection = $.extend({
       title: '',            // the display title of the collection
       caseSensitive: false, // are search terms case sensitive?
       data: null,           // all data and ajax cache
@@ -30,8 +30,24 @@
         return false; // cannot autodetect type!!
       }
     }
+	
+
     
+    /*******************************************
+    Make all keys case insensitive, if requested
+    ********************************************/
     
+		
+    if(collection.type == 'data' && !collection.caseSensitive) {
+			
+			$.each(collection.data, function(key, value){
+				collection.data[key.toUpperCase()] = value;
+				delete collection.data[key]
+			})
+			
+    }
+	
+	
     
     /*******************************************
     Generate keys from data if necessary
@@ -43,6 +59,9 @@
         collection.keys.push(key);
       })
     }
+	
+	
+	
     
     /*******************************************
     TODO: insert callback into the collection.ajax settings
@@ -58,7 +77,7 @@
     Add collection to global references list and set ID
     ********************************************/
     
-    collection.id = $.referenceCollections.push(collection)
+    collection.id = $.referenceCollections.push(collection) - 1;
     
     return collection;
     

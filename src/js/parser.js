@@ -2,6 +2,9 @@
   
   $.extend({
     addReferences: function (node, re, trigger, triggerData) {
+      
+
+      
       if (node.nodeType === 3) { // new text nodes
         var match = node.data.match(re);
         if (match) {
@@ -16,25 +19,33 @@
 		  
           highlight.addClass('reference-link ' + triggerData.theme).addClass('on-' + trigger)
           var tagData = {}; tagData[trigger] = triggerData;
-          highlight.data('referenceTriggers', tagData)
+          highlight.data('referenceTriggers', $.extend(true, {}, tagData))
+
+          
 		  
           return 1; //skip added node in parent
         }
       } else if ($(node).hasClass('reference-link') && $(node).data('referenceTriggers')) { // already highlighted text nodes 
-		  
-        var highlight = $(node);
-        if(highlight.data('referenceTriggers')[trigger]) {
-          $.unique($.merge(highlight.data('referenceTriggers')[trigger]['collections'], triggerData['collections']))
-          // add to collections
-          highlight.data('referenceTriggers')[trigger]['theme'] = triggerData['theme'];
-          // replace theme
+
+        var match = $(node).text().match(re);
+        
+        if (match) {
+          var highlight = $(node);
+          if(highlight.data('referenceTriggers')[trigger]) {
+            $.unique($.extend(highlight.data('referenceTriggers')[trigger]['collections'], triggerData['collections']))
+            // add to collections
+            highlight.data('referenceTriggers')[trigger]['theme'] = triggerData['theme'];
+            // replace theme
+          } else {
+            highlight.data('referenceTriggers')[trigger] = triggerData;
+          }
         } else {
-          highlight.data('referenceTriggers')[trigger] = triggerData;
+          
+          
         }
-		  
-        //$.unique($.merge($(node).data('referenceCollections'),tagData.referenceCollections));
-      } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
-      !/(script|style)/i.test(node.tagName)) { // ignore script and style nodes
+        
+        
+      } else if ((node.nodeType === 1 && node.childNodes) && !/(script|style)/i.test(node.tagName)) {
         for (var i = 0; i < node.childNodes.length; i++) {
           i += $.addReferences(node.childNodes[i], re, trigger, triggerData);
         }
@@ -88,13 +99,11 @@
         theme: options.theme,
         collections: [collection.id]
       }
-
       
       /*******************************************
       Add the reference links
       ********************************************/
       
-    
       searchEl.each(function () {
         jQuery.addReferences(this, re, options.trigger, triggerData);
       });

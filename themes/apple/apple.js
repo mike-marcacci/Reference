@@ -1,7 +1,7 @@
 (function( $ ) {
 
 /*  
-  $.reference.themes.apple = {
+  $.referenceThemes.apple = {
   
   }
 */
