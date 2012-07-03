@@ -1,12 +1,17 @@
 (function( $ ) {
   
+  "use strict";
+  
   $.extend({
     addReferences: function (node, re, trigger, triggerData) {
       
+      var match;
+      var highlight;
+      
       if (node.nodeType === 3) { // new text nodes
-        var match = node.data.match(re);
+        match = node.data.match(re);
         if (match) {
-          var highlight = document.createElement('span');
+          highlight = document.createElement('span');
           var wordNode = node.splitText(match.index);
           wordNode.splitText(match[0].length);
           var wordClone = wordNode.cloneNode(true);
@@ -14,32 +19,30 @@
           wordNode.parentNode.replaceChild(highlight, wordNode);
           
           highlight = $(highlight);
-		  
-		  
-          highlight.addClass('reference-link ' + triggerData.theme).addClass('on-' + trigger)
+
+
+          highlight.addClass('reference-link ' + triggerData.theme).addClass('on-' + trigger);
           var tagData = {}; tagData[trigger] = triggerData;
-          highlight.data('referenceTriggers', $.extend(true, {}, tagData))
+          highlight.data('referenceTriggers', $.extend(true, {}, tagData));
 
           
-		  
+      
           return 1; //skip added node in parent
         }
       } else if ($(node).hasClass('reference-link') && $(node).data('referenceTriggers')) { // already highlighted text nodes 
 
-        var match = $(node).text().match(re);
+        match = $(node).text().match(re);
         
         if (match) {
-          var highlight = $(node);
+          highlight = $(node);
           if(highlight.data('referenceTriggers')[trigger]) {
-            highlight.data('referenceTriggers')[trigger]['collections'].push(triggerData['collections'][0])
+            highlight.data('referenceTriggers')[trigger].collections.push(triggerData.collections[0]);
             // add to collections
-            highlight.data('referenceTriggers')[trigger]['theme'] = triggerData['theme'];
+            highlight.data('referenceTriggers')[trigger].theme = triggerData.theme;
             // replace theme
           } else {
             highlight.data('referenceTriggers')[trigger] = $.extend(true, {}, triggerData);
           }
-        } else {
-          // let be
         }
         
         
@@ -64,15 +67,16 @@
       theme: 'apple',
       exactMatch: true
     };
-	  
+    
     $.extend(options, o);
-	  
+    
     $.each(options.collections, function(index, value){
-  	
-      if($.inArray(value, $.referenceCollections) == -1) {
-        var collection = $.addReferenceCollection(value);
+    
+      var collection;
+      if($.inArray(value, $.referenceCollections) === -1) {
+        collection = $.addReferenceCollection(value);
       } else {
-        var collection = value;
+        collection = value;
       }
       
       /*******************************************
@@ -83,7 +87,8 @@
       
       // escape special characters in search terms
       terms = jQuery.map(terms, function(word, i) {
-        return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+        //return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+        return word.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
       });
 
       var pattern = "(" + terms.join("|") + ")";
@@ -96,7 +101,7 @@
       var triggerData = {
         theme: options.theme,
         collections: [collection.id]
-      }
+      };
       
       /*******************************************
       Add the reference links
@@ -105,8 +110,8 @@
       searchEl.each(function () {
         jQuery.addReferences(this, re, options.trigger, triggerData);
       });
-	
-    })
+  
+    });
     
 
       
@@ -117,11 +122,11 @@
     Bind reference to links
     ********************************************/
     
-	  
+    
     var triggerBound = false;
     if(searchEl.data('events') && searchEl.data('events')[options.trigger]){
       $.each(searchEl.data('events')[options.trigger], function(i){
-        if(this.selector == ".reference-link.on-" + options.trigger) {
+        if(this.selector === ".reference-link.on-" + options.trigger) {
           triggerBound = true;
         }
       });
@@ -129,20 +134,20 @@
     
     if(!triggerBound) {
       searchEl.on(options.trigger, ".reference-link.on-" + options.trigger, $.fn.reference);
-	  
-      $(document).on(options.trigger, $.fn.closeReferences)
+    
+      $(document).on(options.trigger, $.fn.closeReferences);
     }
     
-	  
+    
     
     
     return $(this);
-  }
+  };
   
   $.fn.removeReferences = function(o){
     
     return $(this);
-  }
+  };
   
 })( jQuery );
 
