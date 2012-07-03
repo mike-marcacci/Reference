@@ -1,9 +1,0 @@
-(function( $ ) {
-
-/*  
-  $.referenceThemes.apple = {
-  
-  }
-*/
-  
-})( jQuery );
