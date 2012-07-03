@@ -13,7 +13,7 @@
   -moz-box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
   box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
   padding: .1em .2em;
-  margin: -0.1em -0.2em;
+  margin: -0.18em -0.28em;
   border: .08em solid #FFEE00;
   border-radius: .4em;
   color: black;
@@ -32,19 +32,23 @@
   border-width: 1px;
   color: black;
   margin-bottom: 10px;
+  max-height: 220px;
   opacity: .97;
   padding: 7px 20px;
   position: absolute;
   width: 280px;
   z-index: 1;
   font-size: 14px;
+}
+/* line 73, ../scss/apple.scss */
+.reference-bubble.apple.down {
   top: 100%;
   left: 50%;
   margin-left: -160px;
   margin-top: 8px;
 }
-/* line 77, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-up {
+/* line 79, ../scss/apple.scss */
+.reference-bubble.apple.down .reference-bubble-arrow {
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   left: 50%;
@@ -57,7 +61,7 @@
   width: 0;
 }
 /* line 28, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-up::after {
+.reference-bubble.apple.down .reference-bubble-arrow::after {
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   left: 50%;
@@ -73,8 +77,14 @@
   top: 3px;
   -webkit-filter: drop-shadow(0 -2px 0 white);
 }
-/* line 81, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-right {
+/* line 84, ../scss/apple.scss */
+.reference-bubble.apple.left {
+  right: 100%;
+  top: -10%;
+  margin-right: 8px;
+}
+/* line 89, ../scss/apple.scss */
+.reference-bubble.apple.left .reference-bubble-arrow {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   top: 50%;
@@ -87,7 +97,7 @@
   width: 0;
 }
 /* line 28, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-right::after {
+.reference-bubble.apple.left .reference-bubble-arrow::after {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   top: 50%;
@@ -103,8 +113,15 @@
   right: 3px;
   -webkit-filter: drop-shadow(2px 0 0 white);
 }
-/* line 85, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-down {
+/* line 94, ../scss/apple.scss */
+.reference-bubble.apple.up {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -160px;
+  margin-bottom: 8px;
+}
+/* line 100, ../scss/apple.scss */
+.reference-bubble.apple.up .reference-bubble-arrow {
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   left: 50%;
@@ -117,7 +134,7 @@
   width: 0;
 }
 /* line 28, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-down::after {
+.reference-bubble.apple.up .reference-bubble-arrow::after {
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   left: 50%;
@@ -133,8 +150,14 @@
   bottom: 3px;
   -webkit-filter: drop-shadow(0 2px 0 white);
 }
-/* line 89, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-left {
+/* line 105, ../scss/apple.scss */
+.reference-bubble.apple.right {
+  left: 100%;
+  top: -16px;
+  margin-left: 8px;
+}
+/* line 109, ../scss/apple.scss */
+.reference-bubble.apple.right .reference-bubble-arrow {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   top: 50%;
@@ -147,7 +170,7 @@
   width: 0;
 }
 /* line 28, ../scss/apple.scss */
-.reference-bubble.apple .reference-bubble-arrow-left::after {
+.reference-bubble.apple.right .reference-bubble-arrow::after {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   top: 50%;
@@ -163,7 +186,7 @@
   left: 3px;
   -webkit-filter: drop-shadow(-2px 0 0 white);
 }
-/* line 93, ../scss/apple.scss */
+/* line 114, ../scss/apple.scss */
 .reference-bubble.apple .reference-collection-name {
   padding-bottom: 3px;
   border-bottom: 1px solid rgba(115, 115, 115, 0.3);
@@ -174,4 +197,8 @@
   text-shadow: 1px 1px 0 white;
   color: #737373;
   display: block;
+}
+/* line 122, ../scss/apple.scss */
+.reference-bubble.apple .reference-collection-name:not(:nth-child(2)) {
+  padding-top: 1em;
 }

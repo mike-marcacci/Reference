@@ -4,14 +4,14 @@
 @mixin arrow_style($side, $color) {
   @if $side == 'top' or $side == 'bottom' {
     border-left: $arrow-width solid transparent;
-  	border-right: $arrow-width solid transparent;
-  	left: 50%;
-  	margin-left: -1 * $arrow-width;
+    border-right: $arrow-width solid transparent;
+    left: 50%;
+    margin-left: -1 * $arrow-width;
   } @else {
     border-top: $arrow-width solid transparent;
-  	border-bottom: $arrow-width solid transparent;
-  	top: 50%;
-  	margin-top: -1 * $arrow-width;
+    border-bottom: $arrow-width solid transparent;
+    top: 50%;
+    margin-top: -1 * $arrow-width;
   }
   border-#{opposite-position($side)} : $arrow-height solid $color;
   #{opposite-position($side)} : 100%;
@@ -44,7 +44,7 @@
   @include background-image(linear-gradient(top, rgba(255,243,86,1) 0%,rgba(229,197,16,1) 100%));
   @include box-shadow(0 .1em .2em rgba(0,0,0,.5));
   padding: .1em .2em;
-  margin: -.1em -.2em;
+  margin: -.18em -.28em;
   border: .08em solid #FFEE00;
   border-radius: .4em;
   color: black;
@@ -60,6 +60,7 @@
   border-width: $border-width;
   color: $color;
   margin-bottom: 10px;
+  max-height: 220px;
   opacity: .97;
   padding: 7px $padding-x;
   position: absolute;
@@ -67,27 +68,47 @@
   z-index: 1;
   font-size: $font-size;
   
-  
-  top: 100%;
-  left: 50%;
-  margin-left: -1*($width/2 + $padding-x);
-  margin-top: $arrow-height - 4px;
 
   
-  .reference-bubble-arrow-up {
-  	@include arrow('top');
+  &.down {
+    top: 100%;
+    left: 50%;
+    margin-left: -1*($width/2 + $padding-x);
+    margin-top: $arrow-height - 4px;
+    
+    .reference-bubble-arrow {
+      @include arrow('top');
+    }
   }
 
-  .reference-bubble-arrow-right {
-  	@include arrow('right');
+  &.left {
+    right: 100%;
+    top: -10%;
+    margin-right: $arrow-height - 4px;
+    
+    .reference-bubble-arrow {
+      @include arrow('right');
+    }
   }
 
-  .reference-bubble-arrow-down {
-  	@include arrow('bottom');
+  &.up {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -1*($width/2 + $padding-x);
+    margin-bottom: $arrow-height - 4px;
+    
+    .reference-bubble-arrow {
+      @include arrow('bottom');
+    }
   }
 
-  .reference-bubble-arrow-left {
-  	@include arrow('left');
+  &.right {
+    left: 100%;
+    top: -16px;
+    margin-left: $arrow-height - 4px;
+    .reference-bubble-arrow {
+      @include arrow('left');
+    }
   }
   
   .reference-collection-name {
@@ -98,5 +119,8 @@
     text-shadow: 1px 1px 0 white;
     color: $header-color;
     display: block;
+    &:not(:nth-child(2)) {
+	    padding-top: 1em;
+    }
   }
 }

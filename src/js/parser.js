@@ -3,8 +3,6 @@
   $.extend({
     addReferences: function (node, re, trigger, triggerData) {
       
-
-      
       if (node.nodeType === 3) { // new text nodes
         var match = node.data.match(re);
         if (match) {
@@ -16,6 +14,7 @@
           wordNode.parentNode.replaceChild(highlight, wordNode);
           
           highlight = $(highlight);
+		  
 		  
           highlight.addClass('reference-link ' + triggerData.theme).addClass('on-' + trigger)
           var tagData = {}; tagData[trigger] = triggerData;
@@ -32,16 +31,15 @@
         if (match) {
           var highlight = $(node);
           if(highlight.data('referenceTriggers')[trigger]) {
-            $.unique($.extend(highlight.data('referenceTriggers')[trigger]['collections'], triggerData['collections']))
+            highlight.data('referenceTriggers')[trigger]['collections'].push(triggerData['collections'][0])
             // add to collections
             highlight.data('referenceTriggers')[trigger]['theme'] = triggerData['theme'];
             // replace theme
           } else {
-            highlight.data('referenceTriggers')[trigger] = triggerData;
+            highlight.data('referenceTriggers')[trigger] = $.extend(true, {}, triggerData);
           }
         } else {
-          
-          
+          // let be
         }
         
         
@@ -130,7 +128,9 @@
     }
     
     if(!triggerBound) {
-      searchEl.on(options.trigger, ".reference-link.on-" + options.trigger, $.fn.reference)
+      searchEl.on(options.trigger, ".reference-link.on-" + options.trigger, $.fn.reference);
+	  
+      $(document).on(options.trigger, $.fn.closeReferences)
     }
     
 	  
