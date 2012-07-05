@@ -318,7 +318,7 @@
   
   $.fn.closeReferences = function(event){
     $('.reference-link-active').removeClass('reference-link-active');
-    $('.reference-bubble').remove();
+    $('#reference-bubble').remove();
     return $(this);
   };
   

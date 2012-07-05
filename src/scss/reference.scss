@@ -8,7 +8,7 @@
   text-shadow: 0 0 3px yellow, 0 0 3px yellow,0 0 5px #FF3C00;
 }
 
-.reference-bubble {
+#reference-bubble {
   @include nested-reset;
   position: absolute;
 }

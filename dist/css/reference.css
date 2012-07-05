@@ -9,23 +9,23 @@
 }
 
 /* line 11, ../../src/scss/reference.scss */
-.reference-bubble {
+#reference-bubble {
   position: absolute;
 }
 /* line 50, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble div, .reference-bubble span, .reference-bubble applet, .reference-bubble object, .reference-bubble iframe,
-.reference-bubble h1, .reference-bubble h2, .reference-bubble h3, .reference-bubble h4, .reference-bubble h5, .reference-bubble h6, .reference-bubble p, .reference-bubble blockquote, .reference-bubble pre,
-.reference-bubble a, .reference-bubble abbr, .reference-bubble acronym, .reference-bubble address, .reference-bubble big, .reference-bubble cite, .reference-bubble code,
-.reference-bubble del, .reference-bubble dfn, .reference-bubble em, .reference-bubble img, .reference-bubble ins, .reference-bubble kbd, .reference-bubble q, .reference-bubble s, .reference-bubble samp,
-.reference-bubble small, .reference-bubble strike, .reference-bubble strong, .reference-bubble sub, .reference-bubble sup, .reference-bubble tt, .reference-bubble var,
-.reference-bubble b, .reference-bubble u, .reference-bubble i, .reference-bubble center,
-.reference-bubble dl, .reference-bubble dt, .reference-bubble dd, .reference-bubble ol, .reference-bubble ul, .reference-bubble li,
-.reference-bubble fieldset, .reference-bubble form, .reference-bubble label, .reference-bubble legend,
-.reference-bubble table, .reference-bubble caption, .reference-bubble tbody, .reference-bubble tfoot, .reference-bubble thead, .reference-bubble tr, .reference-bubble th, .reference-bubble td,
-.reference-bubble article, .reference-bubble aside, .reference-bubble canvas, .reference-bubble details, .reference-bubble embed,
-.reference-bubble figure, .reference-bubble figcaption, .reference-bubble footer, .reference-bubble header, .reference-bubble hgroup,
-.reference-bubble menu, .reference-bubble nav, .reference-bubble output, .reference-bubble ruby, .reference-bubble section, .reference-bubble summary,
-.reference-bubble time, .reference-bubble mark, .reference-bubble audio, .reference-bubble video {
+#reference-bubble div, #reference-bubble span, #reference-bubble applet, #reference-bubble object, #reference-bubble iframe,
+#reference-bubble h1, #reference-bubble h2, #reference-bubble h3, #reference-bubble h4, #reference-bubble h5, #reference-bubble h6, #reference-bubble p, #reference-bubble blockquote, #reference-bubble pre,
+#reference-bubble a, #reference-bubble abbr, #reference-bubble acronym, #reference-bubble address, #reference-bubble big, #reference-bubble cite, #reference-bubble code,
+#reference-bubble del, #reference-bubble dfn, #reference-bubble em, #reference-bubble img, #reference-bubble ins, #reference-bubble kbd, #reference-bubble q, #reference-bubble s, #reference-bubble samp,
+#reference-bubble small, #reference-bubble strike, #reference-bubble strong, #reference-bubble sub, #reference-bubble sup, #reference-bubble tt, #reference-bubble var,
+#reference-bubble b, #reference-bubble u, #reference-bubble i, #reference-bubble center,
+#reference-bubble dl, #reference-bubble dt, #reference-bubble dd, #reference-bubble ol, #reference-bubble ul, #reference-bubble li,
+#reference-bubble fieldset, #reference-bubble form, #reference-bubble label, #reference-bubble legend,
+#reference-bubble table, #reference-bubble caption, #reference-bubble tbody, #reference-bubble tfoot, #reference-bubble thead, #reference-bubble tr, #reference-bubble th, #reference-bubble td,
+#reference-bubble article, #reference-bubble aside, #reference-bubble canvas, #reference-bubble details, #reference-bubble embed,
+#reference-bubble figure, #reference-bubble figcaption, #reference-bubble footer, #reference-bubble header, #reference-bubble hgroup,
+#reference-bubble menu, #reference-bubble nav, #reference-bubble output, #reference-bubble ruby, #reference-bubble section, #reference-bubble summary,
+#reference-bubble time, #reference-bubble mark, #reference-bubble audio, #reference-bubble video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -34,26 +34,26 @@
   vertical-align: baseline;
 }
 /* line 53, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble table {
+#reference-bubble table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 /* line 55, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble caption, .reference-bubble th, .reference-bubble td {
+#reference-bubble caption, #reference-bubble th, #reference-bubble td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 /* line 57, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble q, .reference-bubble blockquote {
+#reference-bubble q, #reference-bubble blockquote {
   quotes: none;
 }
 /* line 101, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble q:before, .reference-bubble q:after, .reference-bubble blockquote:before, .reference-bubble blockquote:after {
+#reference-bubble q:before, #reference-bubble q:after, #reference-bubble blockquote:before, #reference-bubble blockquote:after {
   content: "";
   content: none;
 }
 /* line 59, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.reference-bubble a img {
+#reference-bubble a img {
   border: none;
 }
