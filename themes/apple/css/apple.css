@@ -442,3 +442,12 @@
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+/* line 234, ../scss/apple.scss */
+#reference-bubble.apple ul {
+  list-style: disc outside;
+  margin-left: 20px;
+}
+/* line 239, ../scss/apple.scss */
+#reference-bubble.apple a:hover {
+  text-decoration: underline;
+}

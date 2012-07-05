@@ -231,4 +231,13 @@
     -webkit-animation-timing-function: linear;
   }
   
+  ul {
+    list-style: disc outside;
+    margin-left: 20px;
+  }
+  
+  a:hover {
+	  text-decoration: underline;
+  }
+  
 }

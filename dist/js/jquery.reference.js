@@ -261,7 +261,7 @@
       
       linkEl.addClass('reference-link-active');
       
-      var bubble = $('<div class="reference-bubble apple"><div class="reference-bubble-arrow"></div></div>').appendTo(linkEl);
+      var bubble = $('<div id="reference-bubble" class="apple"><div class="reference-bubble-arrow"></div></div>').appendTo(linkEl);
       
       // take care of positioning on page
       if(bubble.offset().top + parseInt(bubble.css('max-height'),10) + (bubble.outerHeight() - bubble.height()) > $(window).height()) {

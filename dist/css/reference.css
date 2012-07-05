@@ -6,16 +6,20 @@
 /* line 7, ../../src/scss/reference.scss */
 .reference-link:not(.reference-link-active) {
   text-shadow: 0 0 3px yellow, 0 0 3px yellow,0 0 5px #FF3C00;
+  cursor: pointer;
 }
 
-/* line 11, ../../src/scss/reference.scss */
+/* line 12, ../../src/scss/reference.scss */
 #reference-bubble {
   position: absolute;
+  color: black;
+  font-weight: normal;
+  font-family: "Times New Roman", "Times", serif;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 27, ../../src/scss/reference.scss */
 #reference-bubble div, #reference-bubble span, #reference-bubble applet, #reference-bubble object, #reference-bubble iframe,
 #reference-bubble h1, #reference-bubble h2, #reference-bubble h3, #reference-bubble h4, #reference-bubble h5, #reference-bubble h6, #reference-bubble p, #reference-bubble blockquote, #reference-bubble pre,
-#reference-bubble a, #reference-bubble abbr, #reference-bubble acronym, #reference-bubble address, #reference-bubble big, #reference-bubble cite, #reference-bubble code,
+#reference-bubble a, #reference-bubble a:hover, #reference-bubble abbr, #reference-bubble acronym, #reference-bubble address, #reference-bubble big, #reference-bubble cite, #reference-bubble code,
 #reference-bubble del, #reference-bubble dfn, #reference-bubble em, #reference-bubble img, #reference-bubble ins, #reference-bubble kbd, #reference-bubble q, #reference-bubble s, #reference-bubble samp,
 #reference-bubble small, #reference-bubble strike, #reference-bubble strong, #reference-bubble sub, #reference-bubble sup, #reference-bubble tt, #reference-bubble var,
 #reference-bubble b, #reference-bubble u, #reference-bubble i, #reference-bubble center,
@@ -25,26 +29,45 @@
 #reference-bubble article, #reference-bubble aside, #reference-bubble canvas, #reference-bubble details, #reference-bubble embed,
 #reference-bubble figure, #reference-bubble figcaption, #reference-bubble footer, #reference-bubble header, #reference-bubble hgroup,
 #reference-bubble menu, #reference-bubble nav, #reference-bubble output, #reference-bubble ruby, #reference-bubble section, #reference-bubble summary,
-#reference-bubble time, #reference-bubble mark, #reference-bubble audio, #reference-bubble video {
+#reference-bubble time, #reference-bubble mark, #reference-bubble audio, #reference-bubble video, #reference-bubble ul li, #reference-bubble ol li {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  background: transparent none;
+  padding: 0;
+  color: black;
+  font-weight: normal;
+  font-family: "Times New Roman", "Times", serif;
+  text-decoration: none;
 }
-/* line 53, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 37, ../../src/scss/reference.scss */
+#reference-bubble body {
+  line-height: 1;
+}
+/* line 40, ../../src/scss/reference.scss */
+#reference-bubble ol, #reference-bubble ul {
+  list-style-type: none;
+  list-style-position: outside;
+}
+/* line 43, ../../src/scss/reference.scss */
+#reference-bubble ol li, #reference-bubble ul li {
+  list-style: inherit;
+}
+/* line 47, ../../src/scss/reference.scss */
 #reference-bubble table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 55, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 50, ../../src/scss/reference.scss */
 #reference-bubble caption, #reference-bubble th, #reference-bubble td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-/* line 57, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 53, ../../src/scss/reference.scss */
 #reference-bubble q, #reference-bubble blockquote {
   quotes: none;
 }
@@ -53,7 +76,7 @@
   content: "";
   content: none;
 }
-/* line 59, ../../../../../.rvm/gems/ruby-1.9.3-p194@global/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 56, ../../src/scss/reference.scss */
 #reference-bubble a img {
   border: none;
 }
