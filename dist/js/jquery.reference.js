@@ -158,8 +158,7 @@
     var options = {
       collections: [],
       trigger: 'click',
-      theme: 'apple',
-      exactMatch: true
+      theme: 'apple'
     };
     
     $.extend(options, o);
@@ -181,16 +180,15 @@
       
       // escape special characters in search terms
       terms = jQuery.map(terms, function(word, i) {
+        
+        // is it a regular expression?
         if(word.charAt(0) === '/' && word.charAt(word.length-1) === '/'){
           return word.substr(1,word.length-2);
         }
         return word.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
       });
 
-      var pattern = "(" + terms.join("|") + ")";
-      if (options.exactMatch) {
-        pattern = "\\b" + pattern + "\\b";
-      }
+      var pattern = "\\b(" + terms.join("|") + ")\\b";
       
       var re = new RegExp(pattern, collection.caseSensitive ? "" : "i");
       
@@ -286,12 +284,29 @@
       // find matching collections from data-referenceCollections
       $.each(linkData.collections, function(index, id){
         var collection = $.referenceCollections[id];
-        var term = collection.caseSensitive ? linkTerm : linkTerm.toUpperCase();
-        var result;
+        var result = [];
         
         var asdf;
         if(collection.type === 'data') {
-          result = collection.data[term];
+          $.each(collection.data, function(key, value){
+            var pattern;
+            
+            // is the key a Regex?
+            if(key.charAt(0) === '/' && key.charAt(key.length-1) === '/'){
+              pattern = key.substr(1,key.length-2);
+            } else {
+              pattern = key.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+            }
+            
+            
+            pattern = "\\b(" + pattern + ")\\b";
+            var re = new RegExp(pattern, collection.caseSensitive ? "" : "i");
+            
+            if(linkTerm.match(re)){
+              result.push(value);
+            }
+            
+          });
         } else if(collection.type === 'ajax') {
           asdf = 0; 
         } else if(collection.type === 'custom') {
@@ -299,7 +314,7 @@
         }
         
         bubble.append('<div class="reference-collection-name"><div style="display:none;" class="reference-loading-spinner"><span class="reference-loading-top"></span><span class="reference-loading-left"></span><span class="reference-loading-bottom"></span><span class="reference-loading-right"></span></div>' + collection.title + '</div>');
-        bubble.append('<div class="reference-collection-result">' + result + '</div>');
+        bubble.append('<div class="reference-collection-result">' + result.join('</div><div class="reference-collection-result">') + '</div>');
         
       });
       

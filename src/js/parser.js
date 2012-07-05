@@ -64,8 +64,7 @@
     var options = {
       collections: [],
       trigger: 'click',
-      theme: 'apple',
-      exactMatch: true
+      theme: 'apple'
     };
     
     $.extend(options, o);
@@ -87,16 +86,15 @@
       
       // escape special characters in search terms
       terms = jQuery.map(terms, function(word, i) {
+        
+        // is it a regular expression?
         if(word.charAt(0) === '/' && word.charAt(word.length-1) === '/'){
           return word.substr(1,word.length-2);
         }
         return word.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
       });
 
-      var pattern = "(" + terms.join("|") + ")";
-      if (options.exactMatch) {
-        pattern = "\\b" + pattern + "\\b";
-      }
+      var pattern = "\\b(" + terms.join("|") + ")\\b";
       
       var re = new RegExp(pattern, collection.caseSensitive ? "" : "i");
       
