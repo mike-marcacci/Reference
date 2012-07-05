@@ -87,8 +87,7 @@
       
       // escape special characters in search terms
       terms = jQuery.map(terms, function(word, i) {
-        //return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-        return word.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+
       });
 
       var pattern = "(" + terms.join("|") + ")";
