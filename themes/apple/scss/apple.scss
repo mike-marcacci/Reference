@@ -1,6 +1,46 @@
 @import "compass";
 @import "variables";
 
+
+
+@-webkit-keyframes reference-loading-spinner-rotate{
+  0%{     -webkit-transform: rotate(0deg);   }
+  8.32%{  -webkit-transform: rotate(0deg);   }
+
+  8.33%{  -webkit-transform: rotate(30deg);  }
+  16.65%{ -webkit-transform: rotate(30deg);  }
+
+  16.66%{ -webkit-transform: rotate(60deg);  }
+  24.99%{ -webkit-transform: rotate(60deg);  }
+
+  25%{    -webkit-transform: rotate(90deg);  }
+  33.32%{ -webkit-transform: rotate(90deg);  }
+
+  33.33%{ -webkit-transform: rotate(120deg); }
+  41.65%{ -webkit-transform: rotate(120deg); }
+
+  41.66%{ -webkit-transform: rotate(150deg); }
+  49.99%{ -webkit-transform: rotate(150deg); }
+
+  50%{    -webkit-transform: rotate(180deg); }
+  58.32%{ -webkit-transform: rotate(180deg); }
+
+  58.33%{ -webkit-transform: rotate(210deg); }
+  66.65%{ -webkit-transform: rotate(210deg); }
+
+  66.66%{ -webkit-transform: rotate(240deg); }
+  74.99%{ -webkit-transform: rotate(240deg); }
+
+  75%{    -webkit-transform: rotate(270deg); }
+  83.32%{ -webkit-transform: rotate(270deg); }
+
+  83.33%{ -webkit-transform: rotate(300deg); }
+  91.65%{ -webkit-transform: rotate(300deg); }
+
+  91.66%{ -webkit-transform: rotate(330deg); }
+  100%{   -webkit-transform: rotate(330deg); }
+}
+
 @mixin arrow_style($side, $color) {
   @if $side == 'top' or $side == 'bottom' {
     border-left: $arrow-width solid transparent;
@@ -120,7 +160,75 @@
     color: $header-color;
     display: block;
     &:not(:nth-child(2)) {
-	    padding-top: 1em;
+      padding-top: 1em;
     }
   }
+  
+  
+  // ripped off from sencha touch, fixed, and modified
+  .reference-loading-spinner {
+    font-size: 250%;
+    height: $loading-spinner-size;
+    margin: auto;
+    width: $loading-spinner-size;
+    position: relative;
+
+    -webkit-transform-origin: $loading-spinner-size/2 $loading-spinner-size/2;
+
+    /* Shared Properties for all the bars */
+    & > span, & > span:before, & > span:after {
+      display: block;
+      position: absolute;
+      width: $loading-spinner-bar-width;
+      height: $loading-spinner-bar-height;
+      top: 0;
+      -webkit-transform-origin: $loading-spinner-bar-width/2 $loading-spinner-size/2;
+      @include border-radius($loading-spinner-bar-width/2);
+      content: " ";
+    }
+
+    & > span {
+      &.reference-loading-top           {  background-color: rgba($loading-spinner-color,0.99); }
+      &.reference-loading-top::after    {  background-color: rgba($loading-spinner-color,0.90); }
+      &.reference-loading-left::before  {  background-color: rgba($loading-spinner-color,0.80); }
+      &.reference-loading-left          {  background-color: rgba($loading-spinner-color,0.70); }
+      &.reference-loading-left::after   {  background-color: rgba($loading-spinner-color,0.60); }
+      &.reference-loading-bottom::before{  background-color: rgba($loading-spinner-color,0.50); }
+      &.reference-loading-bottom        {  background-color: rgba($loading-spinner-color,0.40); }
+      &.reference-loading-bottom::after {  background-color: rgba($loading-spinner-color,0.35); }
+      &.reference-loading-right::before {  background-color: rgba($loading-spinner-color,0.30); }
+      &.reference-loading-right         {  background-color: rgba($loading-spinner-color,0.25); }
+      &.reference-loading-right::after  {  background-color: rgba($loading-spinner-color,0.20); }
+      &.reference-loading-top::before   {  background-color: rgba($loading-spinner-color,0.15); }
+    }
+  }
+
+  .reference-loading-spinner > span {
+    left:         50%;
+    margin-left:  -$loading-spinner-bar-width/2;
+  }
+
+  // .reference-loading-spinner > span::before, .reference-loading-spinner > span::after{  content: " "; }
+
+  /* Rotate each of the 4 Spans */
+
+  .reference-loading-spinner > span.reference-loading-top{    -webkit-transform: rotate(0deg);    -moz-transform: rotate(0deg);   }
+  .reference-loading-spinner > span.reference-loading-right{  -webkit-transform: rotate(90deg);   -moz-transform: rotate(90deg);  }
+  .reference-loading-spinner > span.reference-loading-bottom{ -webkit-transform: rotate(180deg);  -moz-transform: rotate(180deg); }
+  .reference-loading-spinner > span.reference-loading-left{   -webkit-transform: rotate(270deg);  -moz-transform: rotate(270deg); }
+
+  /* These are the two lines that surround each of the 4 Span lines */
+
+  .reference-loading-spinner > span::before{-webkit-transform: rotate(30deg);   -moz-transform: rotate(30deg);  }
+  .reference-loading-spinner > span::after{ -webkit-transform: rotate(-30deg);  -moz-transform: rotate(-30deg); }
+
+  /* Set Animation */
+
+  .reference-loading-spinner {
+    -webkit-animation-name: reference-loading-spinner-rotate;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+  }
+  
 }

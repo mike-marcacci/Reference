@@ -9,6 +9,6 @@
 }
 
 .reference-bubble {
+  @include nested-reset;
   position: absolute;
 }
-

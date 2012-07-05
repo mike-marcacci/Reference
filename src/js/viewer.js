@@ -48,7 +48,7 @@
           asdf = 0;
         }
         
-        bubble.append('<div class="reference-collection-name">' + collection.title + '</div>');
+        bubble.append('<div class="reference-collection-name"><div style="display:none;" class="reference-loading-spinner"><span class="reference-loading-top"></span><span class="reference-loading-left"></span><span class="reference-loading-bottom"></span><span class="reference-loading-right"></span></div>' + collection.title + '</div>');
         bubble.append('<div class="reference-collection-result">' + result + '</div>');
         
       });
