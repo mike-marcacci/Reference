@@ -45,11 +45,23 @@
         }
       }
           
+      var collection3 = {
+        title: 'Ok...',      
+        data: {
+          'eget' : "Try out <a href=\"http://google.com\">Google!</a>",
+          'cursus' : "Cursus.",
+          'ipsum' : "Oooh"
+        }
+      }
+          
         
       $('p').addReferences({
         collections: [collection1, collection2],
         trigger: 'click'
-      });
+      }).addReferences({
+        collections: [collection3],
+        trigger: 'click'
+      })
 		
     })
   </script>
