@@ -136,6 +136,7 @@
             // replace theme
           } else {
             highlight.data('referenceTriggers')[trigger] = $.extend(true, {}, triggerData);
+            highlight.addClass('on-' + trigger);
           }
         }
         
@@ -144,6 +145,23 @@
         for (var i = 0; i < node.childNodes.length; i++) {
           i += $.addReferences(node.childNodes[i], re, trigger, triggerData);
         }
+      }
+      return 0;
+    },
+
+    removeReferences: function (link, trigger, remIds) {
+      
+      // remove collection IDs from supplied trigger
+      if($.isArray(remIds)){
+        link.data('referenceTriggers')[trigger].collections = $.grep(link.data('referenceTriggers')[trigger].collections, function(v){
+          return $.inArray(v,remIds) === -1;
+        });
+      }
+      
+      // remove the trigger if it's empty or if we're removing all collections
+      if(!$.isArray(remIds) || link.data('referenceTriggers')[trigger].collections.length === 0) {
+        link.removeClass('on-'+trigger);
+        delete link.data('referenceTriggers')[trigger];
       }
       return 0;
     }
@@ -239,6 +257,39 @@
   };
   
   $.fn.removeReferences = function(o){
+    var searchEl = $(this);
+        
+    var options = {
+      collections: null,
+      triggers: null
+    };
+    
+    $.extend(options, o);
+    
+    $('.reference-link', searchEl).each(function(i){
+      var link = $(this);
+      
+      // remove the link if no options specified
+      if(!options.collections && !options.triggers){
+        link.replaceWith(link.html());
+      } else {
+        // remove specified collection IDs from specified or all triggers
+        $.each(link.data('referenceTriggers'),function(trigger,data){
+          if(!$.isArray(options.triggers) || $.inArray(trigger, options.triggers) !== -1) {
+            $.removeReferences(link, trigger, options.collections);
+          }
+        });
+        // if all triggers are removed, remove the link
+        if(Object.keys(link.data('referenceTriggers')).length === 0){
+          link.replaceWith(link.html());
+        }
+      }
+      
+      
+      
+    });
+    
+    
     
     return $(this);
   };
@@ -259,7 +310,7 @@
       
       linkEl.addClass('reference-link-active');
       
-      var bubble = $('<div id="reference-bubble" class="apple"><div class="reference-bubble-arrow"></div></div>').appendTo(linkEl);
+      var bubble = $('<div id="reference-bubble"><div class="reference-bubble-arrow"></div></div>').addClass(linkEl.data('referenceTriggers')[event.type].theme).appendTo(linkEl);
       
       // take care of positioning on page
       if(bubble.offset().top + parseInt(bubble.css('max-height'),10) + (bubble.outerHeight() - bubble.height()) > ($(window).height() + $(window).scrollTop())) {

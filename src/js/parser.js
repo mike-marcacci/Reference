@@ -181,10 +181,10 @@
       } else {
         // remove specified collection IDs from specified or all triggers
         $.each(link.data('referenceTriggers'),function(trigger,data){
-          if(!$.isArray(options.triggers) || $.inArray(trigger, options.triggers) != -1) {
+          if(!$.isArray(options.triggers) || $.inArray(trigger, options.triggers) !== -1) {
             $.removeReferences(link, trigger, options.collections);
           }
-        })
+        });
         // if all triggers are removed, remove the link
         if(Object.keys(link.data('referenceTriggers')).length === 0){
           link.replaceWith(link.html());
@@ -193,7 +193,7 @@
       
       
       
-    })
+    });
     
     
     
